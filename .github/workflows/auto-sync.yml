@@ -1,6 +1,7 @@
 name: Auto Sync Data
 
 on:
+  workflow_dispatch:  # 允许手动触发
   schedule:
     # 测试阶段：每10分钟执行一次
     - cron: '*/10 * * * *'
