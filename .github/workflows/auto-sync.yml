@@ -11,12 +11,13 @@ on:
 jobs:
   auto-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许写入仓库内容
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           ref: 'main'
-          token: ${{ secrets.ACTION_TOKEN }}
 
       - name: Fetch JSON data
         run: |
@@ -40,5 +41,5 @@ jobs:
           git commit -m "Auto update data.json [skip ci]"
           git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
