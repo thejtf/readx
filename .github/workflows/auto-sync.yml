@@ -3,10 +3,8 @@ name: Auto Sync Data
 on:
   workflow_dispatch:  # 允许手动触发
   schedule:
-    # 测试阶段：每10分钟执行一次
-    - cron: '*/10 * * * *'
-    # 测试正常后，取消上面的注释，使用下面的配置（每小时执行一次）
-    # - cron: '0 * * * *'
+    # 每30分钟执行一次（在每小时的 0 分和 30 分触发）
+    - cron: '*/30 * * * *'
 
 jobs:
   auto-sync:
