@@ -289,8 +289,8 @@ const getHeptabaseData = async () => {
 
     // 以下代码不会执行，因为上面已经 return
     // 获取本地数据
-    // let heptabaseDataFromLocal = JSON.parse(localStorage.getItem("heptabase_blog_data"))
-
+    /*
+    let heptabaseDataFromLocal = JSON.parse(localStorage.getItem("heptabase_blog_data"))
 
     if (heptabaseDataFromLocal) {
 
@@ -334,6 +334,7 @@ const getHeptabaseData = async () => {
         const heptabaseDataFromServer = await getHeptabaseDataFromServer();
         return heptabaseDataFromServer;
     }
+    */
 };
 
 

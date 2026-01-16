@@ -15,6 +15,7 @@ import 'github-markdown-css'
 import 'antd/dist/reset.css';
 
 import { getHeptabaseData, getClearCard, heptaToMD } from '../constantFunction'
+import { message } from 'antd';
 
 import Clipboard from 'clipboard';
 
