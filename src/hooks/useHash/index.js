@@ -15,7 +15,7 @@ const useHash = () => {
         return () => {
             window.removeEventListener("hashchange", handleChangeEvent);
         };
-    }, []);
+    }, [handleChangeEvent]);
 
     // 更新 hash
     const updateHash = useCallback(

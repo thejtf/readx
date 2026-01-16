@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CONFIG from '../config'
 // import { Button } from 'antd';
@@ -6,7 +6,7 @@ import CONFIG from '../config'
 // import '../output.css'
 // import '../index.css'
 // import { NextUIProvider } from "@nextui-org/system";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/navbar";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 
 
 // 页面头部
@@ -50,7 +50,7 @@ function Nav(props) {
 
         < Navbar shouldHideOnScroll isBlurred={false} maxWidth={'full'} height={'3rem'} isBordered={true} >
             <NavbarBrand>
-                <span onClick={handleNavBarClick}><Link to='/'><img style={{ width: '22px' }} src='logo.png'></img></Link></span>
+                <span onClick={handleNavBarClick}><Link to='/'><img style={{ width: '22px' }} src='logo.png' alt="logo"></img></Link></span>
             </NavbarBrand >
             <NavbarContent className='nav' justify="end"
                 style={{ marginBottom: '0' }}

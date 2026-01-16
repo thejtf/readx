@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import WidgetBot, { API } from '@widgetbot/react-embed'
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import WidgetBot from '@widgetbot/react-embed'
 
 import ReactGA from 'react-ga';
 import CONFIG from '../config';
@@ -14,11 +14,7 @@ import '../style.css'
 import 'github-markdown-css'
 import 'antd/dist/reset.css';
 
-import { getHeptabaseData, getClearCard, getClearImag, heptaToMD } from '../constantFunction'
-
-import useHash from "../hooks/useHash";
-
-import { Button, message, Tooltip } from 'antd';
+import { getHeptabaseData, getClearCard, heptaToMD } from '../constantFunction'
 
 import Clipboard from 'clipboard';
 
@@ -41,7 +37,6 @@ function Post(props) {
     const [activeNote, setActiveNote] = useState('null');
     const [showChatWindow, setShowChatWindow] = useState(false);
 
-    let { param1 } = useParams();
     let location = useLocation();
     let navigate = useNavigate();
 
@@ -67,7 +62,8 @@ function Post(props) {
         }
 
         // 在此可以处理查询参数 myQueryParam 的变化
-    }, [location.search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location.search, location.pathname]);
 
 
     useEffect(() => {
@@ -102,6 +98,7 @@ function Post(props) {
         });
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleShowChatWindow = () => {
@@ -120,7 +117,7 @@ function Post(props) {
         console.log('Post findContent for:');
         for (let i = 0; i < heptabase_blog_data.cards.length; i++) {
 
-            if (heptabase_blog_data.cards[i]['id'] == id) {
+            if (heptabase_blog_data.cards[i]['id'] === id) {
 
                 // // 处理内容中的图片
                 // heptabase_blog_data.cards[i] = getClearImag(heptabase_blog_data.cards[i])
@@ -213,7 +210,7 @@ function Post(props) {
                         // URL 参数 !== current_id
                     }
 
-                    if (new_url_search == '') {
+                    if (new_url_search === '') {
                         new_url_search += '?note-id=' + url_search_list[i]
                     } else {
                         new_url_search += '&note-id=' + url_search_list[i]
@@ -225,7 +222,7 @@ function Post(props) {
                     }
                 }
 
-                if (new_url_search == '') {
+                if (new_url_search === '') {
                     new_url_search += '?note-id=' + link_id
                 } else {
                     new_url_search += '&note-id=' + link_id
@@ -271,7 +268,7 @@ function Post(props) {
         let url_search_list = getUrlSearch_req['url_search_list']
 
         for (let i = 0; i < url_search_list.length; i++) {
-            if (url_search_list[i] == '') {
+            if (url_search_list[i] === '') {
                 continue
             }
             // 将数据保存到 card list 中
@@ -566,7 +563,7 @@ function Post(props) {
             if (type > 0) {
 
                 // 如果元素无标题
-                if (note.classList.contains('mini') == false) {
+                if (note.classList.contains('mini') === false) {
                     // 前一个元素显示垂直标题
                     let note_title = document.createElement('div')
                     note_title.classList.add('note_title')

@@ -18,6 +18,7 @@ const getCardName = (cardId) => {
 }
 
 // fetch 错误时的反馈弹窗
+// eslint-disable-next-line no-unused-vars
 const showConfirm = () => {
     confirm({
         title: 'Sorry,some ting erro😥',
@@ -66,6 +67,7 @@ const getLastEditedTime = (dateBegin) => {
 
 // 处理网易云音乐
 // 输入 markdown 格式的 URL，例如 [xxx](http:....)，返回网易云音乐的 iframe HTML
+// eslint-disable-next-line no-unused-vars
 const setNeteaseMusic = (custom_old_card) => {
     // 判断类型是歌曲还是歌单
     let type = 2 //歌曲
@@ -234,7 +236,7 @@ const getHeptabaseDataFromServer = async () => {
 
             const data = getDataResponse
             // 处理卡片数据
-            const newData = handleHeptabaseData(data)
+            handleHeptabaseData(data)
             return data
 
 
@@ -285,8 +287,9 @@ const getHeptabaseData = async () => {
 
     return handleHeptabaseData(heptabaseData)
 
+    // 以下代码不会执行，因为上面已经 return
     // 获取本地数据
-    let heptabaseDataFromLocal = JSON.parse(localStorage.getItem("heptabase_blog_data"))
+    // let heptabaseDataFromLocal = JSON.parse(localStorage.getItem("heptabase_blog_data"))
 
 
     if (heptabaseDataFromLocal) {
@@ -580,6 +583,7 @@ const heptaContentTomd = (content_list, parent_node, parent_card_id) => {
                 if ('marks' in content_list[i]) {
 
                     // 有行内样式
+                    // eslint-disable-next-line no-loop-func
                     content_list[i]['marks'].forEach(mark => {
 
                         switch (mark['type']) {
